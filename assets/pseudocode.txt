@@ -1,0 +1,18 @@
+HTML - 
+Create table for the daily planner:
+row/hour: td per time in the day, td per input field, td per save button
+
+JS - 
+- Set div ID currentDay for current day display (get clock if you can)
+- set event listeners to each "save button" => save current input field to loscal storage
+- always fetch from local storage to corralating input field
+- Reset local storage every new day and show new planner for the day
+Create color coding functions:
+    - if time is current color code hour to "current"
+    - if time past color code hour to "past"
+    - else (future hours) keep color coded to "future"
+
+CSS - 
+ - color code "past"
+ - color code "present"
+ - color code "future"
