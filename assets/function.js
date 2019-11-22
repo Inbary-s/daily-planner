@@ -77,22 +77,23 @@ for (var i = 0; i < todayHour.length; i++){
     
     for (var j = 0; j < input.length; j++) {
         var currentInput = (input[i]);
-        var past = (input[j]<input[i]);
-        var future = (input>input[i])
+        // var past = (input[j]=0);
+        var future = (input[j]>input[i])
+        // console.log(past)
         
         console.log(todayHour[i].textContent);
         if (currentIndexValue === currentHourValue){
             $(currentInput).addClass('present');
             console.log("in the present");
         }
-            else if (past){
+            else if (currentIndexValue < currentHourValue){
                 console.log("in the past");
-                $(past).addClass("past");
+                $(currentInput).addClass("past");
             }
-                else if (future){
+             else if (currentIndexValue > currentHourValue){
                 console.log("in the future");
-                $(future).addClass('future");
-                }
+                $(currentInput).addClass('future');
+             }
         
     }
 };
