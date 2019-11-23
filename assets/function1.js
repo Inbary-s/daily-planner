@@ -1,12 +1,12 @@
 var m = moment();
-var currentHour = m.hour();
+var currentHour = m.format('h:00 A');
+// var hour = m.format('h');
+// console.log (hour);
 var currentDay = document.querySelector('#currentDay');
 var time = moment().format('LLLL');
 var save = document.querySelectorAll('.saveBtn');
-var input = document.querySelectorAll('input');
+var plan = $('.plan');
 var todayHour = $('.hour');
-// var h = currentHour.split(h);
-// console.log (h);
 // var currentHour = ($((m).hours()));
 // currentHour.format('hh:mm')
 
@@ -27,10 +27,10 @@ console.log(time);
 $(save).click(function(e){
     event.preventDefault();
     // console.log(NodeList[input]);
-    for (var i=0; i<input.length; i++){
-        var userInput = input[i].value;
-        userInput = input[i].value;
-        console.log(input[i].value);//
+    for (var i=0; i<plan.length; i++){
+        var userInput = plan[i].value;
+        userInput = plan[i].value;
+        console.log(plan[i].value);//
         
         //    localStorage.setItem(userInput, userInput);//works!!!!!!!!!!!
         // localStorage.setItem(hour, userInput);
@@ -69,25 +69,28 @@ $(save).click(function(e){
 // }
 
 for (var i = 0; i < todayHour.length; i++){
-    var currentIndex = $(todayHour[i]).data("time");
-    // var currentIndexValue = (JSON.stringify(currentIndex));
-    // var currentHourValue = (JSON.stringify(currentHour));
+    var currentIndex = (todayHour[i].textContent);
+    var currentIndexValue = (JSON.stringify(currentIndex));
+    var currentHourValue = (JSON.stringify(currentHour));
     console.log(currentIndex);
-    // console.log(currentIndexValue);
+    console.log(currentIndexValue)
     
-    for (var j = 0; j < input.length; j++) {
-        var currentInput = (input[i]);
+    for (var j = 0; j < plan.length; j++) {
+        var currentInput = (plan[i]);
+        // var past = (input[j]=0);
+        var future = (plan[j]>plan[i])
+        // console.log(past)
         
         console.log(todayHour[i].textContent);
-        if (currentIndex === currentHour){
+        if (currentIndexValue === currentHourValue){
             $(currentInput).addClass('present');
             console.log("in the present");
         }
-            else if (currentIndex < currentHour){
+            else if (currentIndexValue < currentHourValue){
                 console.log("in the past");
-                $(currentInput).addClass("past");
+                $(currentInput).addClass('past');
             }
-             else if (currentIndex > currentHour){
+             else if (currentIndexValue > currentHourValue){
                 console.log("in the future");
                 $(currentInput).addClass('future');
              }
@@ -96,5 +99,8 @@ for (var i = 0; i < todayHour.length; i++){
 };
 // isBefore is also a command - moment('xx:xx').isBefore('xx:xx')
 // moment#isAfter and moment#isSame
+
+// - if time past color code hour to "past"
+//     - else (future hours) keep color coded to "future"
 
 // $(".time").addClass("past"); ---- WORKSSSSSS
